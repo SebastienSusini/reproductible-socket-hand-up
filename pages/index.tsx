@@ -15,6 +15,7 @@ export default function Home() {
 
 export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const { locale } = ctx;
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
