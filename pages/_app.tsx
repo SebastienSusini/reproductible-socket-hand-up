@@ -47,7 +47,6 @@ const unregister = async () => {
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    console.log(process.env);
     unregister();
   }, []);
 
