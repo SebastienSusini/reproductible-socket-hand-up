@@ -22,7 +22,7 @@ import { rainbowAuthMagicConnector } from "./connectors/RainbowMagicConnector";
 
 const isProduction = () => process.env.NEXT_PUBLIC_NODE_ENV === "production";
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, provider } = configureChains(
   isProduction() ? [polygon] : [polygonMumbai, polygon],
   [
     jsonRpcProvider({
@@ -73,7 +73,6 @@ const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   provider,
-  webSocketProvider,
   logger: {
     warn: (message) => log.warn(message),
   },
