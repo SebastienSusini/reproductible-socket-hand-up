@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Larken";
+  src: url("/fonts/Larken-Black.ttf") format("TrueType");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Light.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-LightItalic.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-RegularItalic.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-MediumItalic.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Bold.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-BoldItalic.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Black.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-BlackItalic.otf") format("OpenType");
+  font-display: swap;
+  font-weight: 900;
+  font-style: italic;
+}
+
+@layer base {
+  body {
+    @apply font-satoshi min-h-screen md:bg-body-texture-md md:bg-no-repeat md:bg-fixed 2xl:bg-cover !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-skyblue-400;
+  }
+  h1 {
+    @apply font-larken font-black text-3xl text-skyblue-600;
+  }
+  h2 {
+    @apply font-larken font-black text-3xl text-skyblue-600;
+  }
+  h3 {
+    @apply font-bold text-lg text-skyblue-600;
+  }
+  h4 {
+    @apply font-satoshi text-lg text-grey-400;
+  }
+  h5 {
+    @apply font-satoshi text-base text-grey-300;
+  }
+  p {
+    @apply font-satoshi text-base font-medium text-skyblue-600;
+  }
+}
+
+@layer components {
+  .link {
+    @apply underline cursor-pointer text-skyblue-600;
+  }
+  .custom-scrollbar {
+    @apply !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-grey-400;
+  }
+  .shadow-full {
+    @apply shadow-[0_0px_10px_0px_rgba(0,0,0,0.3)];
+  }
+  .nextEl {
+    @apply hidden xs:block absolute top-1/2 right-0 -translate-y-1/2 z-10 cursor-pointer;
+  }
+  .nextEl.elDisabled {
+    @apply cursor-default opacity-10;
+  }
+  .prevEl {
+    @apply hidden xs:block absolute top-1/2 left-0 -translate-y-1/2 z-10 cursor-pointer disabled:cursor-default;
+  }
+  .prevEl.elDisabled {
+    @apply cursor-default opacity-10;
+  }
+  .nextElDisc {
+    @apply hidden md:group-hover:block absolute top-[40%] -right-1 -translate-y-1/2 z-10 cursor-pointer transition hover:scale-110;
+  }
+  .prevElDisc {
+    @apply hidden md:group-hover:block absolute top-[40%] -left-1 -translate-y-1/2 z-10 cursor-pointer transition hover:scale-110;
+  }
+  .nextElDisc.elDisabled {
+    @apply cursor-default opacity-0;
+  }
+  .prevElDisc.elDisabled {
+    @apply cursor-default opacity-0;
+  }
+  .nextElDiscTop {
+    @apply hidden md:group-hover:block absolute top-[34%] -right-1 -translate-y-1/2 z-10 cursor-pointer transition hover:scale-110;
+  }
+  .prevElDiscTop {
+    @apply hidden md:group-hover:block absolute top-[34%] -left-1 -translate-y-1/2 z-10 cursor-pointer transition hover:scale-110;
+  }
+  .nextElDiscTop.elDisabled {
+    @apply cursor-default opacity-0;
+  }
+  .prevElDiscTop.elDisabled {
+    @apply cursor-default opacity-0;
+  }
+  .primary {
+    @apply flex w-max min-w-[180px] md:min-w-[210px] text-sm md:text-base items-center justify-center gap-2 rounded-lg bg-skyblue-600 border border-skyblue-600 px-5 py-3 text-center font-semibold text-white shadow-md uppercase outline-none disabled:opacity-60;
+  }
+  .secondary {
+    @apply flex w-max min-w-[180px] md:min-w-[210px] text-sm md:text-base items-center justify-center gap-2 rounded-lg bg-white border border-skyblue-600 px-5 py-3 text-center font-semibold text-skyblue-600 shadow-md uppercase outline-none disabled:opacity-60;
+  }
+  .swiper-slide {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  .swiper-wrapper {
+    -webkit-transform-style: preserve-3d;
+    align-items: center;
+    overflow-x: visible !important;
+  }
+  .safari-fix {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .remove-white-blury {
+    transform: scale(1.1);
+  }
+}
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input:checked ~ .dot {
+    transform: translateX(120%);
+  }
+  input:checked + div svg {
+    @apply !block;
+  }
+  reach-portal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  :root {
+    --swiper-image-ratio: 33.3%; /* ratio 16:9 = 56.25% */
+
+    --swiper-width: 50%;
+    --swiper-inactive-scale: 0.85; /* makes the other slide smaller */
+
+    /* responsive settings */
+    --swiper-mobile-width: 90%;
+    --swiper-mobile-inactive-scale: 0.95;
+  }
+}

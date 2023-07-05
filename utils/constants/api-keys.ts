@@ -18,4 +18,4 @@ export const discordClientId: string | undefined =
 export const discordClientSecret: string | undefined =
   process.env.DISCORD_CLIENT_SECRET;
 export const walletConnectProjectId: string | undefined =
-  "aa0ef4d7e5feb9ebe836dae580bd42db";
+  process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;

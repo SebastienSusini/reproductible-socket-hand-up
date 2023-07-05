@@ -1,6 +1,6 @@
-import { log } from 'next-axiom';
+import { log } from "next-axiom";
 
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   braveWallet,
   coinbaseWallet,
@@ -9,18 +9,18 @@ import {
   metaMaskWallet,
   rainbowWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createClient } from 'wagmi';
-import { polygon, polygonMumbai } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-import { publicProvider } from 'wagmi/providers/public';
+} from "@rainbow-me/rainbowkit/wallets";
+import { configureChains, createClient } from "wagmi";
+import { polygon, polygonMumbai } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+import { publicProvider } from "wagmi/providers/public";
 
-import { alchemyId, walletConnectProjectId } from 'utils/constants/api-keys';
+import { alchemyId, walletConnectProjectId } from "utils/constants/api-keys";
 
-import { rainbowAuthMagicConnector } from './connectors/RainbowMagicConnector';
+import { rainbowAuthMagicConnector } from "./connectors/RainbowMagicConnector";
 
-const isProduction = () => process.env.NEXT_PUBLIC_NODE_ENV === 'production';
+const isProduction = () => process.env.NEXT_PUBLIC_NODE_ENV === "production";
 
 const { chains, provider, webSocketProvider } = configureChains(
   isProduction() ? [polygon] : [polygonMumbai, polygon],
@@ -30,7 +30,9 @@ const { chains, provider, webSocketProvider } = configureChains(
       weight: 2,
       rpc: (_chain) => ({
         http:
-          _chain.id === 80001 ? 'https://rpc.ankr.com/polygon_mumbai' : 'https://polygon-rpc.com/',
+          _chain.id === 80001
+            ? "https://rpc.ankr.com/polygon_mumbai"
+            : "https://polygon-rpc.com/",
       }),
     }),
     alchemyProvider({
@@ -45,11 +47,11 @@ const { chains, provider, webSocketProvider } = configureChains(
 
 const connectors = connectorsForWallets([
   {
-    groupName: 'Recommended',
+    groupName: "Recommended",
     wallets: [rainbowAuthMagicConnector({ chains }) as any],
   },
   {
-    groupName: 'Popular',
+    groupName: "Popular",
     wallets: [
       injectedWallet({ chains }),
       walletConnectWallet({ chains, projectId: walletConnectProjectId! }),
@@ -58,9 +60,9 @@ const connectors = connectorsForWallets([
     ],
   },
   {
-    groupName: 'Others',
+    groupName: "Others",
     wallets: [
-      coinbaseWallet({ appName: 'socketHangUp', chains }),
+      coinbaseWallet({ appName: "socketHangUp", chains }),
       ledgerWallet({ chains, projectId: walletConnectProjectId! }),
       braveWallet({ chains }),
     ],
